@@ -34,6 +34,6 @@ comptime {
 
 pub export fn _stage_1() callconv(.C) noreturn {
     bios.enable_color();
-    bios.write_string("Hello World!", .{ .fg = .light_red, .bg = .blue });
+    bios.write_string("Hello World!", .{ .fg = .light_red, .bg = .red });
     while (true) {}
 }

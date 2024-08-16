@@ -30,10 +30,10 @@ pub const Bios = enum(u4) {
 
     /// Stores what colors to use for various BIOS interrupts.
     pub const Style = packed struct(u8) {
-        /// Background color, usually only supports 8 of the colors.
-        bg: Bios = .black,
         /// Foreground color, all are supported.
         fg: Bios = .white,
+        /// Background color, usually only supports 8 of the colors.
+        bg: Bios = .black,
 
         /// Get the bit representation of this style.
         pub inline fn to_bits(self: Style) u8 {
