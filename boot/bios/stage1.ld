@@ -60,5 +60,5 @@ SECTIONS {
     }
     _mbr_end = .;
     
-    _stage_2_start = .;
+    _stage2_start = .;
 }
