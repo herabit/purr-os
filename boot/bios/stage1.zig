@@ -45,9 +45,8 @@ export fn _stage1() callconv(.C) noreturn {
 
     if (loadStage2()) |_| {
         runStage2();
-    } else |err| {
-        bios.writeString(@errorName(err), .{ .fg = .light_red });
-        bios.writeStringInline("\r\n", .{ .fg = .light_red });
+    } else |_| {
+        bios.writeString("Failed to load stage 2.\r\n", .{ .fg = .light_red });
     }
 
     while (true) {}

@@ -47,13 +47,12 @@ pub const DiskAddressPacket = extern struct {
 
     pub inline fn new(start_lba: u64, sectors: u16, target: [*]u8) !Self {
         const target_bits: u32 = @bitCast(@intFromPtr(target));
-        const t_offset: u16 = @truncate(target_bits);
-        const t_segment = math.cast(u16, target_bits >> 16) orelse return error.InvalidSegment;
+        const t_offset: u16 = math.cast(u16, target_bits) orelse return error.InvalidTarget;
 
         return .{
             .sectors = sectors,
             .target_offset = t_offset,
-            .target_segment = t_segment,
+            .target_segment = 0,
             .start_lba = start_lba,
         };
     }
